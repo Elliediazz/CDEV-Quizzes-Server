@@ -5,11 +5,22 @@ const QuizSchema = new mongoose.Schema({
     author: { type: String },
     questions: [{
         questionText: { type: String, required: true },
-        answer1: { type: String, required: true },
-        answer2: { type: String, required: true },
-        answer3: { type: String, required: true },
-        answer4: { type: String, required: true },
-        correctAnswer: { type: Number, required: true }
+        answer1: {
+            text: { type: String, required: true },
+            isCorrect: { type: Boolean, required: true }
+        },
+        answer2: {
+            text: { type: String, required: true },
+            isCorrect: { type: Boolean, required: true }
+        },
+        answer3: {
+            text: { type: String, required: true },
+            isCorrect: { type: Boolean, required: true }
+        },
+        answer4: {
+            text: { type: String, required: true },
+            isCorrect: { type: Boolean, required: true }
+        }
     }]
 })
 
