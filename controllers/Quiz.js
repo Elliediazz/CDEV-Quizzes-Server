@@ -35,8 +35,20 @@ async function addQuiz(req, res){
     }
 }
 
+async function deleteQuiz(req, res){
+    try {
+        const { id } = req.params
+        const quiz = await Quiz.findByIdAndDelete(id)
+        res.json({"message": `Quiz id ${id} had been deleted.`})
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({'message': 'error deleting quiz'})
+    }
+}
+
 module.exports = {
     getAllQuizzes,
     getQuizById,
-    addQuiz
+    addQuiz,
+    deleteQuiz
 }
