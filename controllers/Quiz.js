@@ -46,9 +46,37 @@ async function deleteQuiz(req, res){
     }
 }
 
+//Get edit page
+async function getEdit(req, res){
+    try {
+        const { id } = req.params
+        const quiz = await Quiz.findBy(id)
+        res.render('editQuiz', {
+             quiz
+        })
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({'message': 'error retrieving Edit Page'})
+    }
+}
+
+//Update quiz
+async function updateQuiz(req, res){
+    try {
+        const { id } = req.params
+        const quiz = await Quiz.findByIdAndUpdate(id, req.body)
+        res.redirect(`/quiz/${id}`)
+    } catch (error) {
+        console.log(error)
+        res.send('error updating quiz')
+    }
+}
+
 module.exports = {
     getAllQuizzes,
     getQuizById,
     addQuiz,
-    deleteQuiz
+    deleteQuiz,
+    getEdit,
+    updateQuiz
 }
