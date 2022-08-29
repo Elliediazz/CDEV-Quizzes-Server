@@ -1,5 +1,4 @@
 # CDEV-Quizzes-Server
-# CDEV Quizzes
 
 ## Description: What is the purpose of this Project?
 
